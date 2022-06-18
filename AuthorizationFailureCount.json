@@ -1,0 +1,7 @@
+{
+    "source": ["aws.signin"],
+    "detail-type": ["AWS API Call via CloudTrail"],
+    "detail": {
+      "errorCode": ["*UnauthorizedOperation", "AccessDenied*"]
+    }
+  }

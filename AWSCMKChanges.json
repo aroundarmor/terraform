@@ -1,0 +1,8 @@
+{
+    "source": ["aws.kms"],
+    "detail-type": ["AWS API Call via CloudTrail"],
+    "detail": {
+      "eventSource": ["kms.amazonaws.com"],
+      "eventName": ["DisableKey", "ScheduleKeyDeletion"]
+    }
+  }

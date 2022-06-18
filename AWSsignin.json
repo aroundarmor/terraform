@@ -1,0 +1,15 @@
+{
+    "source": ["aws.signin"],
+    "detail-type": ["AWS API Call via CloudTrail"],
+    "detail": {
+      "eventSource": ["signin.amazonaws.com"],
+      "eventName": ["ConsoleLogin"],
+      "responseElements": {
+        "ConsoleLogin": ["Success"]
+      },
+      "additionalEventData": {
+        "MFAUsed": ["No"]
+      },
+      "eventType": ["AwsConsoleSignin"]
+    }
+  }
