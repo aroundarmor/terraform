@@ -4,7 +4,7 @@ provider "aws" {
   access_key = "access_key"
   secret_key = "secret_key"
 }
-
+ 
 #creating eventbridge event rule
 #1
 resource "aws_cloudwatch_event_rule" "config" {
