@@ -40,7 +40,7 @@ resource "nutanix_virtual_machine" "vm" {
   num_vcpus_per_socket = "2"
   num_sockets          = "1"
   memory_size_mib      = "4096"
-
+ 
 #adding disk
   disk_list {
     data_source_reference = {
