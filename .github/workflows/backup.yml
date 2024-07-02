@@ -20,6 +20,10 @@ on:
   # schedule:
   #   - cron: '0 2 * * *'  # Runs the job daily at 2 AM
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   backup:
     runs-on: ubuntu-latest
