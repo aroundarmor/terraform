@@ -54,6 +54,7 @@ jobs:
     - name: Clone Repository With Mirror
       run: |
         git clone --mirror -b ${{ github.event.inputs.branch }} https://github.com/aroundarmor/terraform.git
+        # git clone --mirror https://github.com/your-github-username/your-repo.git for all branch mirror
         cd terraform.git
         git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/backup-terraform-repo
         git push codecommit --mirror
