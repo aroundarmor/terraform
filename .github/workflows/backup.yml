@@ -1,0 +1,48 @@
+name: Backup GitHub to CodeCommit
+
+on:
+  # Allows manual triggers
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to backup'
+        required: true
+        # default: 'main'
+        type: string
+      aws-account-id:
+        description: 'AWS Account ID'
+        required: true
+      aws-region:
+        description: 'AWS Region'
+        required: false
+        default: 'us-east-1'
+
+  # schedule:
+  #   - cron: '0 2 * * *'  # Runs the job daily at 2 AM
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.branch }}
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        audience: sts.amazonaws.com
+        aws-region: ${{ github.event.inputs.aws-region }}
+        role-to-assume: arn:aws:iam::${{ github.event.inputs.aws-account-id }}:role/Ollion-Patching-Automation
+
+    - name: Install Git
+      run: sudo apt-get update && sudo apt-get install -y git
+
+    - name: Clone Repository With Mirror
+      run: |
+        git clone --mirror -b ${{ github.event.inputs.branch }} https://github.com/aroundarmor/terraform.git
+        cd terraform.git
+        git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/backup-terraform-repo
+        git push codecommit --mirror
