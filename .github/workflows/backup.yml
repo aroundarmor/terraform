@@ -47,6 +47,7 @@ jobs:
     - name: Configure git to use the AWS CodeCommit credential helper
       run: |
         git config --global credential.UseHttpPath true
+        git config --global credential.'https://git-codecommit.*.amazonaws.com'.helper '!aws codecommit credential-helper $@'
         # git config --global credential.helper '!aws codecommit credential-helper $@'
 
     - name: Clone Repository With Mirror
