@@ -20,7 +20,7 @@
         document.getElementById('data-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            fetch('YOUR_API_ENDPOINT_URL', {
+            fetch('https://nicbffqg3c.execute-api.ap-southeast-1.amazonaws.com', {
                 method: 'POST',
                 body: JSON.stringify(Object.fromEntries(formData)),
                 headers: {
